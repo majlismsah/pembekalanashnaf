@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Pendaftaran - Kajian Pembekalan Ashnaf</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-pattern text-gray-800">
+
+  <!-- Form Section -->
+  <main class="px-6 py-12">
+    <div class="mx-auto max-w-2xl rounded-2xl bg-white shadow-xl ring-1 ring-black/5">
+      <div class="p-7 md:p-9">
+        <h2 class="text-2xl font-bold text-emerald-700">Formulir Pendaftaran</h2>
+        <p class="mt-1 text-sm text-gray-500">Mohon isi dengan benar untuk pencatatan pusat & konfirmasi.</p>
+
+        <!-- Pindahkan form yang sudah ada di index.html ke sini -->
+        <form id="daftarForm" class="mt-7 space-y-6">
+          <!-- ... isi form yang kemarin ... -->
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal sukses -->
+  <div id="successModal" class="fixed inset-0 hidden items-center justify-center bg-black/40 p-6">
+    <div class="max-w-sm w-full rounded-2xl bg-white p-7 text-center shadow-lg">
+      <h3 class="text-lg font-bold">✅ Pendaftaran tercatat</h3>
+      <p class="mt-2 text-sm text-gray-600">Jika WhatsApp tidak terbuka otomatis, klik tombol di bawah.</p>
+      <a id="waLink" href="#" target="_blank"
+         class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-green-500 px-4 py-3 font-semibold text-white hover:bg-green-600 transition">
+        Buka WhatsApp Admin
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
