@@ -1,4 +1,6 @@
-/* Background pattern + hero gradient */
+/* ===========================
+   Background & Hero
+=========================== */
 .bg-pattern {
   background:
     radial-gradient(1200px 600px at 100% -10%, rgba(0, 0, 0, 0.1), transparent 60%),
@@ -11,8 +13,9 @@
     linear-gradient(135deg, #111827 0%, #1f2937 40%, #374151 100%);
 }
 
-
-/* Payment cards */
+/* ===========================
+   Payment Cards (Form)
+=========================== */
 .pay-card {
   display: block;
   cursor: pointer;
@@ -51,10 +54,9 @@
   box-shadow: 0 6px 16px -8px rgba(0,0,0,.35);
 }
 
-/* Animasi transisi section */
-#formSection, #hero {
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.hidden {
-  display: none !important;
+/* ===========================
+   Modal (Form Sukses)
+=========================== */
+#successModal {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
