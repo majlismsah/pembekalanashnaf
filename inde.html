@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pendaftaran Kajian Pembekalan Ashnaf</title>
+
+  <!-- Tailwind CDN (untuk utilitas cepat) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font + CSS custom -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen bg-pattern text-gray-800" style="font-family:'Plus Jakarta Sans', system-ui, Arial, sans-serif">
+
+  <!-- Hero -->
+  <header class="px-6 py-14 text-center text-white bg-hero">
+    <h1 class="text-3xl md:text-5xl font-extrabold drop-shadow-sm">Pembekalan Ma'rifatul Ashnaf Riwayah Binafsiah Part 2</h1>
+    <p class="max-w-2xl mx-auto mt-4 text-base md:text-lg opacity-95">
+      Keilmuan tentang Ashnaf Ruhani didalam lembaga diri.
+    </p>
+    
+    <button onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})"
+      class="mt-7 inline-flex items-center gap-2 rounded-xl bg-yellow-300/95 hover:bg-yellow-300 px-6 py-3 text-gray-900 font-semibold shadow-md transition">
+      Daftar Sekarang
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+    </button>
+  </header>
+
+  <!-- Form -->
+  <main id="form" class="px-6 py-12">
+    <div class="mx-auto max-w-2xl rounded-2xl bg-white/95 shadow-xl ring-1 ring-black/5">
+      <div class="p-7 md:p-9">
+        <h2 class="text-2xl font-bold text-emerald-700">Formulir Pendaftaran</h2>
+        <p class="mt-1 text-sm text-gray-500">Mohon isi dengan benar untuk pencatatan pusat & konfirmasi.</p>
+
+        <form id="daftarForm" class="mt-7 space-y-6">
+          <!-- Nama Sulthon -->
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Sulthon</label>
+            <input type="text" name="nama_sulthon" placeholder="Contoh: Ibrahim Akmali"
+                   required
+                   class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-emerald-200 focus:border-emerald-500">
+          </div>
+
+          <!-- Majlis Wilayah -->
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Majlis Wilayah</label>
+            <select name="majlis" required
+                    class="w-full rounded-xl border border-gray-300 px-4 py-3 bg-white focus:outline-none focus:ring-4 focus:ring-emerald-200 focus:border-emerald-500">
+              <option value="">— Pilih Majlis —</option>
+              <option>Ar-Rahman</option>
+              <option>Ar-Rohim</option>
+              <option>Al-Qudus</option>
+              <option>Al-Malik</option>
+              <option>Nurul Salikin</option>
+              <option>Nurul Kamilah</option>
+              <option>Nurul Hakim</option>
+              <option>Nurul Hikmah</option>
+              <option>Barakotaul Anbiya</option>
+            </select>
+          </div>
+
+          <!-- Metode Pembayaran -->
+          <div>
+            <p class="text-sm font-semibold text-gray-700 mb-3">Metode Pembayaran (Mahar Infaq total Rp 300.000)</p>
+            <div class="grid md:grid-cols-2 gap-5">
+              <!-- Full -->
+              <label class="pay-card" data-method="Full">
+                <input type="radio" name="pembayaran" value="Full" class="peer sr-only" required>
+                <div class="pay-card-inner">
+                  <div class="pay-card-badge">Rekomendasi</div>
+                  <h3 class="text-lg font-bold">Full</h3>
+                  <p class="mt-1 text-gray-700">Rp 300.000 sekali transfer</p>
+                  <ul class="mt-3 text-sm text-gray-600 list-disc list-inside">
+                    <li>Lunas saat daftar</li>
+                    <li>Transfer ke <b>Admin Pusat</b></li>
+                    <li>Nomor tempat duduk</li>
+                  </ul>
+                </div>
+              </label>
+
+              <!-- Cicilan -->
+              <label class="pay-card" data-method="Cicilan">
+                <input type="radio" name="pembayaran" value="Cicilan" class="peer sr-only">
+                <div class="pay-card-inner">
+                  <h3 class="text-lg font-bold">Cicilan 3x</h3>
+                  <p class="mt-1 text-gray-700">Rp 100.000 × 3 kali</p>
+                  <ul class="mt-3 text-sm text-gray-600 list-disc list-inside">
+                    <li>Pembayaran pertama saat daftar</li>
+                    <li><b>Wajib lunas sebelum 20 September 2025</b></li>
+                    <li>Transfer ke <b>Admin Majlis Wilayah</b></li>
+                    <li>Langsung dapat nomor tempat duduk</b></li>
+                  </ul>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit"
+                  class="w-full rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold py-3.5 shadow hover:opacity-95 active:opacity-90 transition">
+            Kirim Pendaftaran
+          </button>
+
+          <!-- Catatan -->
+          <p class="text-xs text-gray-500">
+            Setelah terkirim, Anda akan diarahkan otomatis ke WhatsApp admin sesuai metode pembayaran untuk konfirmasi.
+          </p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal (fallback kalau redirect WA diblokir browser) -->
+  <div id="successModal" class="fixed inset-0 hidden items-center justify-center bg-black/40 p-6">
+    <div class="max-w-sm w-full rounded-2xl bg-white p-7 text-center shadow-lg">
+      <h3 class="text-lg font-bold">✅ Pendaftaran tercatat</h3>
+      <p class="mt-2 text-sm text-gray-600">Jika WhatsApp tidak terbuka otomatis, klik tombol di bawah.</p>
+      <a id="waLink" href="#" target="_blank"
+         class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-green-500 px-4 py-3 font-semibold text-white hover:bg-green-600 transition">
+        Buka WhatsApp Admin
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
