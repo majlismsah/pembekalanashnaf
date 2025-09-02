@@ -63,9 +63,9 @@ if (form) {
 
     // pesan WA
     const pesan = `Assalamualaikum, saya ingin mendaftar Kajian Pembekalan Ashnaf Part 2.
-    🙋 *Nama:* ${nama}
-    🏛️ *Majlis:* ${majlis}
-    💰 *Metode:* ${metode}`;
+    *NAMA:* ${nama}
+    *MAJLIS:* ${majlis}
+    *METODE:* ${metode}`;
 
     const waURL = `https://wa.me/${noAdmin}?text=${encodeURIComponent(pesan)}`;
 
