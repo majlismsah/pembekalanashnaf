@@ -10,7 +10,7 @@ const ADMIN_PUSAT = "62816787977"; // ganti dengan nomor admin pusat
 const ADMIN_WILAYAH = {
   "Ar-Rahman": "628xxxxxx01",
   "Ar-Rohim": "6285777233022",
-  "Al-Qudus": "628xxxxxx03",
+  "Al-Qudus": "6281213922899",
   "Al-Malik": "628xxxxxx04",
   "Nurul Salikin": "628xxxxxx05",
   "Nurul Kamilah": "628xxxxxx06",
