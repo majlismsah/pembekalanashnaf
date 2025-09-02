@@ -67,8 +67,9 @@ if (form) {
     🏛️ *Majlis:* ${majlis}%0A
     💰 *Metode:* ${metode}`;
     
-    const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
-
+    const waURL = `https://wa.me/${noAdmin}?text=${encodeURIComponent(pesan)}`;
+    window.location.href = waURL; // redirect langsung
+    
     try {
       await fetch(SCRIPT_URL, {
         method: "POST",
