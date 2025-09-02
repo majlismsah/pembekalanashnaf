@@ -62,7 +62,7 @@ if (form) {
     }
 
     // pesan WA
-    const pesan = `Assalamualaikum, saya ingin mendaftar Kajian Pembekalan Ashnaf.%0A
+    const pesan = `Assalamualaikum, saya ingin mendaftar Kajian Pembekalan Ashnaf Part 2.
     🙋 *Nama:* ${nama}
     🏛️ *Majlis:* ${majlis}
     💰 *Metode:* ${metode}`;
