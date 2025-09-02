@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pendaftaran Kajian Pembekalan Ashnaf</title>
 
-  <!-- Tailwind CDN (untuk utilitas cepat) -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Font + CSS custom -->
@@ -16,23 +16,27 @@
 </head>
 <body class="min-h-screen bg-pattern text-gray-800" style="font-family:'Plus Jakarta Sans', system-ui, Arial, sans-serif">
 
-  <!-- Hero -->
-  <header class="px-6 py-14 text-center text-white bg-hero">
-    <img src="logo.png" alt="Logo Majlis" class="mx-auto mb-5 w-20 h-20 md:w-28 md:h-28 drop-shadow-lg">
+  <!-- Hero Section -->
+  <section id="hero" class="h-screen flex flex-col items-center justify-center text-center text-white bg-hero px-6">
+    <div class="mx-auto mb-6 flex items-center justify-center w-28 h-28 md:w-40 md:h-40 rounded-full bg-white/90 shadow-lg">
+  <img src="logo.png" alt="Logo Majlis" class="w-20 h-20 md:w-28 md:h-28 object-contain">
+    </div>
     <h1 class="text-3xl md:text-5xl font-extrabold drop-shadow-sm">Pembekalan Ma'rifatul Ashnaf Riwayah Binafsiah Part 2</h1>
     <p class="max-w-2xl mx-auto mt-4 text-base md:text-lg opacity-95">
       Keilmuan tentang Ashnaf Ruhani didalam lembaga diri.
     </p>
     
-    <button onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})"
-      class="mt-7 inline-flex items-center gap-2 rounded-xl bg-yellow-300/95 hover:bg-yellow-300 px-6 py-3 text-gray-900 font-semibold shadow-md transition">
+    <button id="btnDaftar"
+      class="mt-10 inline-flex items-center gap-2 rounded-xl bg-yellow-300/95 hover:bg-yellow-300 px-7 py-3.5 text-gray-900 font-semibold shadow-md transition">
       Daftar Sekarang
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+      </svg>
     </button>
-  </header>
+  </section>
 
-  <!-- Form -->
-  <main id="form" class="px-6 py-12">
+  <!-- Form Section (hidden awal) -->
+  <section id="formSection" class="hidden px-6 py-12">
     <div class="mx-auto max-w-2xl rounded-2xl bg-white/95 shadow-xl ring-1 ring-black/5">
       <div class="p-7 md:p-9">
         <h2 class="text-2xl font-bold text-emerald-700">Formulir Pendaftaran</h2>
@@ -94,7 +98,7 @@
                     <li>Pembayaran pertama saat daftar</li>
                     <li><b>Wajib lunas sebelum 20 September 2025</b></li>
                     <li>Transfer ke <b>Admin Majlis Wilayah</b></li>
-                    <li>Langsung dapat nomor tempat duduk</b></li>
+                    <li>Langsung dapat nomor tempat duduk</li>
                   </ul>
                 </div>
               </label>
@@ -114,9 +118,9 @@
         </form>
       </div>
     </div>
-  </main>
+  </section>
 
-  <!-- Modal (fallback kalau redirect WA diblokir browser) -->
+  <!-- Modal -->
   <div id="successModal" class="fixed inset-0 hidden items-center justify-center bg-black/40 p-6">
     <div class="max-w-sm w-full rounded-2xl bg-white p-7 text-center shadow-lg">
       <h3 class="text-lg font-bold">✅ Pendaftaran tercatat</h3>
