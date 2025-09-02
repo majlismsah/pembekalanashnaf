@@ -1,13 +1,14 @@
 /* Background pattern + hero gradient */
 .bg-pattern {
   background:
-    radial-gradient(1200px 600px at 100% -10%, rgba(16, 185, 129, 0.12), transparent 60%),
-    radial-gradient(800px 400px at -10% 10%, rgba(234, 179, 8, 0.12), transparent 60%),
-    #f7faf9;
+    radial-gradient(1200px 600px at 100% -10%, rgba(0, 0, 0, 0.1), transparent 60%),
+    radial-gradient(800px 400px at -10% 10%, rgba(255, 255, 255, 0.05), transparent 60%),
+    #111827; /* abu gelap */
 }
 
 .bg-hero {
-  background: linear-gradient(135deg, #064e3b 0%, #059669 50%, #10b981 100%);
+  background:
+    linear-gradient(135deg, #111827 0%, #1f2937 40%, #374151 100%);
 }
 
 
