@@ -1,13 +1,12 @@
 // ====== KONFIGURASI ======
 
-// 1) URL Web App Google Apps Script (method doPost JSON)
-//    Ganti dengan URL Web App milik Anda (Deploy > Test deployments / New deployment)
+// 1) URL Web App Google Apps Script
 const SCRIPT_URL = "PASTE_APPS_SCRIPT_WEBAPP_URL";
 
-// 2) Nomor WA Admin Pusat (untuk pembayaran Full)
+// 2) Nomor WA Admin Pusat
 const ADMIN_PUSAT = "62816787977";
 
-// 3) Nomor WA Admin per Majlis (placeholder: silakan ganti)
+// 3) Nomor WA Admin per Majlis
 const ADMIN_WILAYAH = {
   "Ar-Rahman": "628xxxxxx01",
   "Ar-Rohim": "628xxxxxx02",
@@ -19,6 +18,17 @@ const ADMIN_WILAYAH = {
   "Nurul Hikmah": "628xxxxxx08",
   "Barakotaul Anbiya": "628xxxxxx09"
 };
+
+// ====== Toggle Hero & Form ======
+const btnDaftar = document.getElementById("btnDaftar");
+const hero = document.getElementById("hero");
+const formSection = document.getElementById("formSection");
+
+btnDaftar.addEventListener("click", () => {
+  hero.classList.add("hidden");
+  formSection.classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 // ====== UI Helper (card terpilih) ======
 const cards = document.querySelectorAll(".pay-card");
@@ -41,14 +51,13 @@ form.addEventListener("submit", async (e) => {
 
   const nama = form.nama_sulthon.value.trim();
   const majlis = form.majlis.value;
-  const metode = (new FormData(form)).get("pembayaran"); // "Full" atau "Cicilan"
+  const metode = (new FormData(form)).get("pembayaran");
 
   if (!nama || !majlis || !metode) {
     alert("Mohon lengkapi semua isian.");
     return;
   }
 
-  // Siapkan payload untuk Spreadsheet
   const payload = {
     timestamp: new Date().toISOString(),
     nama_sulthon: nama,
@@ -56,10 +65,9 @@ form.addEventListener("submit", async (e) => {
     metode_pembayaran: metode
   };
 
-  // Tentukan nomor admin tujuan WA
   let noAdmin = ADMIN_PUSAT;
   if (metode === "Cicilan") {
-    noAdmin = ADMIN_WILAYAH[majlis] || ADMIN_PUSAT; // fallback ke pusat jika belum diisi
+    noAdmin = ADMIN_WILAYAH[majlis] || ADMIN_PUSAT;
   }
 
   const pesan =
@@ -71,29 +79,23 @@ form.addEventListener("submit", async (e) => {
   const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
 
   try {
-    // Kirim ke Apps Script (Spreadsheet)
     await fetch(SCRIPT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
 
-    // Redirect otomatis ke WhatsApp
     window.location.href = waURL;
 
-    // Fallback modal (kalau popup/redirect diblokir)
     setTimeout(() => {
-      try {
-        if (document.visibilityState === "visible") {
-          waLink.href = waURL;
-          modal.classList.remove("hidden");
-          modal.classList.add("flex");
-        }
-      } catch {}
+      if (document.visibilityState === "visible") {
+        waLink.href = waURL;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
     }, 1200);
 
   } catch (err) {
-    // Jika gagal simpan, tetap arahkan ke WA dengan pemberitahuan
     const waURLFail = `https://wa.me/${noAdmin}?text=${pesan}%0A%0A(Peringatan: Sistem gagal mencatat otomatis, mohon admin bantu catat.)`;
     window.location.href = waURLFail;
 
