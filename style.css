@@ -7,9 +7,9 @@
 }
 
 .bg-hero {
-  background:
-    linear-gradient(135deg, #0f766e 0%, #059669 45%, #10b981 100%);
+  background: linear-gradient(135deg, #064e3b 0%, #059669 50%, #10b981 100%);
 }
+
 
 /* Payment cards */
 .pay-card {
@@ -48,4 +48,12 @@
   padding: 6px 10px;
   border-radius: 999px;
   box-shadow: 0 6px 16px -8px rgba(0,0,0,.35);
+}
+
+/* Animasi transisi section */
+#formSection, #hero {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hidden {
+  display: none !important;
 }
