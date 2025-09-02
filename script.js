@@ -63,12 +63,14 @@ if (form) {
 
     // pesan WA
     const pesan = `Assalamualaikum, saya ingin mendaftar Kajian Pembekalan Ashnaf.%0A
-    🙋 *Nama:* ${nama}%0A
-    🏛️ *Majlis:* ${majlis}%0A
+    🙋 *Nama:* ${nama}
+    🏛️ *Majlis:* ${majlis}
     💰 *Metode:* ${metode}`;
-    
+
     const waURL = `https://wa.me/${noAdmin}?text=${encodeURIComponent(pesan)}`;
-    window.location.href = waURL; // redirect langsung
+
+    // redirect
+    window.location.href = waURL;
     
     try {
       await fetch(SCRIPT_URL, {
