@@ -63,11 +63,12 @@ if (form) {
 
     // pesan WA
     const pesan =
-      `Assalamualaikum, saya ${nama} sudah mendaftar Kajian Pembekalan Ashnaf.%0A` +
-      `Metode pembayaran: ${metode}%0A` +
-      `Majlis: ${majlis}%0A` +
-      `Catatan: Acara 21 September 2025.`;
-
+      `Assalamualaikum, saya ingin mendaftar Kajian Pembekalan Ashnaf.%0A` +
+    🙋 Nama    : ${nama} 
+    🏛️ Majlis  : ${majlis} 
+    💰 Metode   : ${metode}
+    
+    
     const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
 
     try {
