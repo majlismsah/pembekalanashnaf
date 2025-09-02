@@ -1,10 +1,10 @@
 // ====== KONFIGURASI ======
 
 // 1) URL Web App Google Apps Script
-const SCRIPT_URL = "PASTE_APPS_SCRIPT_WEBAPP_URL";
+const SCRIPT_URL = "PASTE_APPS_SCRIPT_WEBAPP_URL"; // ganti dengan URL Apps Script
 
 // 2) Nomor WA Admin Pusat
-const ADMIN_PUSAT = "62816787977";
+const ADMIN_PUSAT = "62816787977"; // ganti dengan nomor admin pusat
 
 // 3) Nomor WA Admin per Majlis
 const ADMIN_WILAYAH = {
@@ -19,18 +19,7 @@ const ADMIN_WILAYAH = {
   "Barakotaul Anbiya": "628xxxxxx09"
 };
 
-// ====== Toggle Hero & Form ======
-const btnDaftar = document.getElementById("btnDaftar");
-const hero = document.getElementById("hero");
-const formSection = document.getElementById("formSection");
-
-btnDaftar.addEventListener("click", () => {
-  hero.classList.add("hidden");
-  formSection.classList.remove("hidden");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-// ====== UI Helper (card terpilih) ======
+// ====== UI Helper (pilih metode pembayaran) ======
 const cards = document.querySelectorAll(".pay-card");
 cards.forEach(card => {
   card.addEventListener("click", () => {
@@ -46,63 +35,70 @@ const form = document.getElementById("daftarForm");
 const modal = document.getElementById("successModal");
 const waLink = document.getElementById("waLink");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const nama = form.nama_sulthon.value.trim();
-  const majlis = form.majlis.value;
-  const metode = (new FormData(form)).get("pembayaran");
+    const nama = form.nama_sulthon.value.trim();
+    const majlis = form.majlis.value;
+    const metode = (new FormData(form)).get("pembayaran");
 
-  if (!nama || !majlis || !metode) {
-    alert("Mohon lengkapi semua isian.");
-    return;
-  }
+    if (!nama || !majlis || !metode) {
+      alert("Mohon lengkapi semua isian.");
+      return;
+    }
 
-  const payload = {
-    timestamp: new Date().toISOString(),
-    nama_sulthon: nama,
-    majlis,
-    metode_pembayaran: metode
-  };
+    const payload = {
+      timestamp: new Date().toISOString(),
+      nama_sulthon: nama,
+      majlis,
+      metode_pembayaran: metode
+    };
 
-  let noAdmin = ADMIN_PUSAT;
-  if (metode === "Cicilan") {
-    noAdmin = ADMIN_WILAYAH[majlis] || ADMIN_PUSAT;
-  }
+    // tentukan admin tujuan
+    let noAdmin = ADMIN_PUSAT;
+    if (metode === "Cicilan") {
+      noAdmin = ADMIN_WILAYAH[majlis] || ADMIN_PUSAT;
+    }
 
-  const pesan =
-    `Assalamualaikum, saya ${nama} sudah mendaftar Kajian Pembekalan Ashnaf.%0A` +
-    `Metode pembayaran: ${metode}%0A` +
-    `Majlis: ${majlis}%0A` +
-    `Catatan: Acara 21 September 2025.`;
+    // pesan WA
+    const pesan =
+      `Assalamualaikum, saya ${nama} sudah mendaftar Kajian Pembekalan Ashnaf.%0A` +
+      `Metode pembayaran: ${metode}%0A` +
+      `Majlis: ${majlis}%0A` +
+      `Catatan: Acara 21 September 2025.`;
 
-  const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
+    const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
 
-  try {
-    await fetch(SCRIPT_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
 
-    window.location.href = waURL;
+      // redirect langsung ke WA
+      window.location.href = waURL;
 
-    setTimeout(() => {
-      if (document.visibilityState === "visible") {
-        waLink.href = waURL;
+      // jika gagal auto-buka WA, tampilkan modal fallback
+      setTimeout(() => {
+        if (document.visibilityState === "visible") {
+          waLink.href = waURL;
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+        }
+      }, 1200);
+
+    } catch (err) {
+      // fallback jika Apps Script gagal
+      const waURLFail = `https://wa.me/${noAdmin}?text=${pesan}%0A%0A(Peringatan: Sistem gagal mencatat otomatis, mohon admin bantu catat.)`;
+      window.location.href = waURLFail;
+
+      setTimeout(() => {
+        waLink.href = waURLFail;
         modal.classList.remove("hidden");
         modal.classList.add("flex");
-      }
-    }, 1200);
-
-  } catch (err) {
-    const waURLFail = `https://wa.me/${noAdmin}?text=${pesan}%0A%0A(Peringatan: Sistem gagal mencatat otomatis, mohon admin bantu catat.)`;
-    window.location.href = waURLFail;
-
-    setTimeout(() => {
-      waLink.href = waURLFail;
-      modal.classList.remove("hidden");
-      modal.classList.add("flex");
-    }, 1200);
-  }
-});
+      }, 1200);
+    }
+  });
+}
