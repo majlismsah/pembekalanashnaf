@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kajian Pembekalan Ashnaf</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pembekalan Ma'rifatul Ashnaf</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="min-h-screen bg-pattern text-gray-100">
+<body class="min-h-screen bg-pattern text-white flex flex-col items-center justify-center px-6 text-center"
+      style="font-family:'Plus Jakarta Sans', system-ui, Arial, sans-serif">
 
-  <!-- Hero Section -->
-  <section id="hero" class="h-screen flex flex-col items-center justify-center text-center bg-hero px-6">
-    <div class="relative mx-auto mb-6 w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-yellow-400 shadow-lg overflow-hidden">
-      <img src="logo.png" alt="Logo Majlis" class="w-full h-full object-contain">
-    </div>
-    <h1 class="text-3xl md:text-5xl font-extrabold drop-shadow-sm">
-      Pembekalan Ma'rifatul Ashnaf Riwayah Binafsiah Part 2
-    </h1>
-    <p class="max-w-2xl mx-auto mt-4 text-base md:text-lg opacity-90">
-      Keilmuan tentang Ashnaf Ruhani didalam lembaga diri.  
-      Acara pada <b>21 September 2025</b>.
-    </p>
+  <!-- Logo -->
+  <div class="relative mx-auto mb-6 w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-yellow-400 shadow-lg overflow-hidden">
+    <img src="logo.png" alt="Logo Majlis" class="w-full h-full object-contain">
+  </div>
 
-    <!-- Tombol ke form.html -->
-    <a href="form.html"
-       class="mt-7 inline-flex items-center gap-2 rounded-xl bg-yellow-300 hover:bg-yellow-400 px-6 py-3 text-gray-900 font-semibold shadow-md transition">
-      Daftar Sekarang
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-      </svg>
-    </a>
-  </section>
+  <!-- Judul -->
+  <h1 class="text-3xl md:text-5xl font-extrabold drop-shadow-sm">
+    Pembekalan Ma'rifatul Ashnaf Riwayah Binafsiah Part 2
+  </h1>
+  <p class="max-w-2xl mx-auto mt-4 text-base md:text-lg opacity-95">
+    Keilmuan tentang Ashnaf Ruhani didalam lembaga diri.
+  </p>
+
+  <!-- Tombol daftar -->
+  <button onclick="window.location.href='form.html'"
+    class="mt-10 inline-flex items-center gap-2 rounded-xl bg-yellow-300/95 hover:bg-yellow-300 px-7 py-3.5 text-gray-900 font-semibold shadow-md transition">
+    Daftar Sekarang
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+    </svg>
+  </button>
 
 </body>
 </html>
