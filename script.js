@@ -99,13 +99,12 @@ form.addEventListener("submit", async (e) => {
   }
 
   const pesan =
-    `Assalamualaikum, saya ${nama} sudah mendaftar Kajian Pembekalan Ashnaf.%0A` +
-    `Nama Jasad: ${namaJasad}%0A` +
-    `Nomor WhatsApp: ${nomorWa}%0A` +
-    `Metode pembayaran: ${metode}%0A` +
-    `Majlis: ${majlis}%0A` +
-    `Catatan: Acara 21 September 2025.`;
-
+  `Assalamualaikum, saya ingin mendaftar Kajian Pembekalan Ashnaf Part 2.%0A` +
+  `Nama Sulthon: *${nama}*%0A` +
+  `Nomor WhatsApp: *${nomorWa}*%0A` +
+  `Majlis: *${majlis}*%0A` +
+  `Metode pembayaran: *${metode}*%0A%0A` +
+  `InsyaAllah saya siap atas Infaq yg sudah ditentukan`;
   const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
 
   try {
