@@ -1,7 +1,7 @@
 // ====== KONFIGURASI ======
 
 // 1) URL Web App Google Apps Script
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz4XySquzXjIgRbhdJJqoqPnbXKkgRi3EoZCWx68FgY8KyriPMpGSgiYiHgz9Lzb5pC/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-lmITs4uDZjT3xMyX4UVmIToeeYy-KHzUcHWrh781HtHZ1dvjphXhRe_aNvyFf2cG/exec";
 
 // 2) Nomor WA Admin Pusat
 const ADMIN_PUSAT = "62816787977";
@@ -66,7 +66,6 @@ inputNomorWa.addEventListener('input', () => {
         value = '62' + value;
     }
 
-    // Pastikan kursor tetap di akhir
     const originalLength = inputNomorWa.value.length;
     inputNomorWa.value = value;
     const newLength = inputNomorWa.value.length;
@@ -87,15 +86,15 @@ form.addEventListener("submit", async (e) => {
     alert("Mohon lengkapi semua isian.");
     return;
   }
-
-  const payload = {
-    timestamp: new Date().toISOString(),
-    nama_sulthon: nama,
-    nama_jasad: namaJasad,
-    nomor_wa: nomorWa,
-    majlis,
-    metode_pembayaran: metode
-  };
+  
+  // Gunakan FormData untuk mengirim data
+  const formData = new FormData(form);
+  formData.append('timestamp', new Date().toISOString());
+  formData.append('nama_sulthon', nama);
+  formData.append('nama_jasad', namaJasad);
+  formData.append('nomor_wa', nomorWa);
+  formData.append('majlis', majlis);
+  formData.append('metode_pembayaran', metode);
 
   let noAdmin = ADMIN_PUSAT;
   if (metode === "Cicilan") {
@@ -113,10 +112,10 @@ form.addEventListener("submit", async (e) => {
   const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
 
   try {
+    // Kirim data menggunakan FormData, tanpa header 'Content-Type'
     await fetch(SCRIPT_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: formData
     });
 
     window.location.href = waURL;
