@@ -57,7 +57,6 @@ inputNomorWa.addEventListener('focus', () => {
 
 inputNomorWa.addEventListener('input', () => {
     let value = inputNomorWa.value;
-    // Hapus karakter non-digit kecuali 62 di awal
     value = value.replace(/[^0-9]/g, '');
 
     if (value.startsWith('0')) {
@@ -66,8 +65,6 @@ inputNomorWa.addEventListener('input', () => {
         value = '62' + value;
     }
 
-    const originalLength = inputNomorWa.value.length;
-    inputNomorWa.value = value;
     const newLength = inputNomorWa.value.length;
     inputNomorWa.setSelectionRange(newLength, newLength);
 });
@@ -87,14 +84,14 @@ form.addEventListener("submit", async (e) => {
     return;
   }
   
-  // Gunakan FormData untuk mengirim data
-  const formData = new FormData(form);
-  formData.append('timestamp', new Date().toISOString());
-  formData.append('nama_sulthon', nama);
-  formData.append('nama_jasad', namaJasad);
-  formData.append('nomor_wa', nomorWa);
-  formData.append('majlis', majlis);
-  formData.append('metode_pembayaran', metode);
+  const payload = {
+    timestamp: new Date().toISOString(),
+    nama_sulthon: nama,
+    nama_jasad: namaJasad,
+    nomor_wa: nomorWa,
+    majlis,
+    metode_pembayaran: metode
+  };
 
   let noAdmin = ADMIN_PUSAT;
   if (metode === "Cicilan") {
@@ -112,10 +109,10 @@ form.addEventListener("submit", async (e) => {
   const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
 
   try {
-    // Kirim data menggunakan FormData, tanpa header 'Content-Type'
     await fetch(SCRIPT_URL, {
       method: "POST",
-      body: formData
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
     });
 
     window.location.href = waURL;
