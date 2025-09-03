@@ -109,6 +109,7 @@ form.addEventListener("submit", async (e) => {
   const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
 
   try {
+    // Gunakan kembali method POST dengan JSON.stringify
     await fetch(SCRIPT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
