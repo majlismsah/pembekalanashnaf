@@ -8,12 +8,12 @@ const ADMIN_PUSAT = "62816787977"; // ganti dengan nomor admin pusat
 
 // 3) Nomor WA Admin per Majlis
 const ADMIN_WILAYAH = {
-  "Ar-Rahman": "628xxxxxx01",
+  "Ar-Rahman": "62895702926434",
   "Ar-Rohim": "6285777233022",
   "Al-Qudus": "6281213922899",
-  "Al-Malik": "628xxxxxx04",
+  "Al-Malik": "6285645276759",
   "Nurul Salikin": "628xxxxxx05",
-  "Nurul Kamilah": "628xxxxxx06",
+  "Nurul Kamilah": "6281298719222",
   "Nurul Hakim": "628xxxxxx07",
   "Nurul Hikmah": "628xxxxxx08",
   "Barakotaul Anbiya": "628xxxxxx09"
