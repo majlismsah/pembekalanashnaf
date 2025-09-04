@@ -3,7 +3,6 @@
 // 1) URL Web App Google Apps Script
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzGbOvpHzHWxp7KmQpr7JzAdZxPHraWiH9NLb9MUJCdjSudtC-xPtZZHQL3M_dQU3Y0/exec";
 
-
 // 2) Nomor WA Admin Pusat
 const ADMIN_PUSAT = "62816787977";
 
@@ -51,26 +50,26 @@ const waLink = document.getElementById("waLink");
 const inputNomorWa = form.nomor_wa;
 
 inputNomorWa.addEventListener('focus', () => {
-    if (inputNomorWa.value.length === 0) {
-        inputNomorWa.value = '62';
-    }
+  if (inputNomorWa.value.length === 0) {
+    inputNomorWa.value = '62';
+  }
 });
 
 inputNomorWa.addEventListener('input', () => {
-    let value = inputNomorWa.value;
-    value = value.replace(/[^0-9]/g, '');
+  let value = inputNomorWa.value.replace(/[^0-9]/g, '');
 
-    if (value.startsWith('0')) {
-        value = '62' + value.substring(1);
-    } else if (value.length > 0 && !value.startsWith('62')) {
-        value = '62' + value;
-    }
+  if (value.startsWith('0')) {
+    value = '62' + value.substring(1);
+  } else if (value.length > 0 && !value.startsWith('62')) {
+    value = '62' + value;
+  }
 
-    const newLength = inputNomorWa.value.length;
-    inputNomorWa.setSelectionRange(newLength, newLength);
+  inputNomorWa.value = value; // pastikan tersimpan hasil format
+  const newLength = value.length;
+  inputNomorWa.setSelectionRange(newLength, newLength);
 });
 
-
+// ====== Submit Form ======
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -84,7 +83,7 @@ form.addEventListener("submit", async (e) => {
     alert("Mohon lengkapi semua isian.");
     return;
   }
-  
+
   const payload = {
     timestamp: new Date().toISOString(),
     nama_sulthon: nama,
@@ -94,24 +93,22 @@ form.addEventListener("submit", async (e) => {
     metode_pembayaran: metode
   };
 
-  let noAdmin = ADMIN_PUSAT;
-  if (metode === "Cicilan") {
-    noAdmin = ADMIN_WILAYAH[majlis] || ADMIN_PUSAT;
-  }
+  // === Arahkan ke admin wilayah (fallback pusat)
+  let noAdmin = ADMIN_WILAYAH[majlis] || ADMIN_PUSAT;
 
   const pesan =
-  `Assalamualaikum, saya ingin mendaftar Kajian Pembekalan Ashnaf Part 2.%0A` +
-  `Nama Sulthon: *${nama}*%0A` +
-  `Nomor WhatsApp: *${nomorWa}*%0A` +
-  `Majlis: *${majlis}*%0A` +
-  `Metode pembayaran: *${metode}*%0A%0A` +
-  `InsyaAllah saya siap atas Infaq yg sudah ditentukan`;
+    `Assalamualaikum, saya ingin mendaftar Kajian Pembekalan Ashnaf Part 2.%0A` +
+    `Nama Sulthon: *${nama}*%0A` +
+    `Nomor WhatsApp: *${nomorWa}*%0A` +
+    `Majlis: *${majlis}*%0A` +
+    `Metode pembayaran: *${metode}*%0A%0A` +
+    `InsyaAllah saya siap atas Infaq yg sudah ditentukan`;
   const waURL = `https://wa.me/${noAdmin}?text=${pesan}`;
 
   try {
     await fetch(SCRIPT_URL, {
       method: "POST",
-      mode: "no-cors", 
+      mode: "no-cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
