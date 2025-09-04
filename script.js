@@ -1,7 +1,7 @@
 // ====== KONFIGURASI ======
 
 // 1) URL Web App Google Apps Script
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmcqN01icnk1q2I8tM9lkQhlD3tIGQNtKBH94oxbcG2M3kbQPZi7BjnQo_WdCoEjs/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLGbF35x5olhvD3cNqvd4STKQMN-UUOBVUzT6c9N_7hCz_XH9YraaFrUActP5u8eZ0/exec";
 
 // 2) Nomor WA Admin Pusat
 const ADMIN_PUSAT = "62816787977";
