@@ -9,13 +9,13 @@ const ADMIN_PUSAT = "62816787977";
 
 // 3) Nomor WA Admin per Majlis
 const ADMIN_WILAYAH = {
-  "Ar-Rahman": "62895702926434",
+  "Ar-Rahman": "6285884025983",
   "Ar-Rohim": "6285777233022",
   "Al-Qudus": "6281213922899",
-  "Al-Malik": "6285645276759",
-  "Nurul Salikin": "628xxxxxx05",
+  "Al-Malik": "6285714932581",
+  "Nurul Salikin": "6282133731320",
   "Nurul Kamilah": "6281298719222",
-  "Nurul Hakim": "628xxxxxx07",
+  "Nurul Hakim": "6281931880041",
   "Nurul Hikmah": "628xxxxxx08",
   "Barakotaul Anbiya": "6285213347126"
 };
